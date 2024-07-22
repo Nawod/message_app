@@ -1,5 +1,4 @@
 "use client"
-import { User } from '@/shared/models/user';
 import Image from 'next/image';
 /**
  * @class TextBox
@@ -59,12 +58,12 @@ function TextBox() {
         } else {
             reset();
         }
-    },[selectedMessage])
+    },[reset, selectedMessage, setValue])
 
   return (
     <div className='flex gap-4 rounded-lg p-4 bg-white'>
         <div className='relative size-8 rounded-full'>
-        {currentUser.image && <Image src={currentUser.image} alt='user' fill className='rounded-full object-cover' sizes='32' />}
+        {currentUser?.image && <Image src={currentUser.image} alt='user' fill className='rounded-full object-cover' sizes='32' />}
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className='flex gap-4 w-full'>
             <textarea {...register("message", { required: true})} className={`resize-none border-2 rounded-md w-full h-24 py-4 px-7 outline-none ${
